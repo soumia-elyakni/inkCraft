@@ -5,7 +5,7 @@ const User = require("./models/Users");
 const dotenv = require("dotenv").config();
 const initDB  = require('./database/db-initiate');
 const routes = require('./routers/index');
-const errorHandler = require("./middlewares/error-handler")
+const {errorHandler} = require("./middlewares/error-handler")
 const cors = require("cors");
 
 initDB()
