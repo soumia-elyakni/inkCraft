@@ -37,13 +37,13 @@ const register = async (req, res) => {
     !body.role ||
     !body.langue
   )
-    throw Error("Fill All Inputs");
+  res.status(400).send({ message: "Please Fill All Input" });
+   
 
   const userExist = await Users.findOne({ email: body.email });
-  if (userExist) {
-    throw Error("Adresse email already have an account");
-  }
-
+  if (userExist) res.status(400).send({ message: "Adresse email already have an account" });
+  
+  
   const role = await Roles.findOne({ name: body.role });
   body.role_id = role._id;
 
@@ -54,7 +54,7 @@ const register = async (req, res) => {
   body.password = await bcrypt.hash(body.password, 10);
 
   const newUser = await Users.create({ ...body });
-  if (!newUser) throw Error("Regstration failed");
+  if (!newUser) res.status(401).send({ message: "Please Fill All Input" });
 
   const newUserId = await Users.findOne({ email: newUser.email }, "_id");
   addLanguesToUser(newUserId, langueArray)
@@ -62,20 +62,20 @@ const register = async (req, res) => {
       res.send("Added Succesfuly");
     })
     .catch((error) => {
-      throw Error(error);
+      res.status(401).send({ message: error });
     });
 };
 
 const login = async (req, res) => {
-  const { body } = req;
+  const { email, password } = req.body;
 
-  if (!body.email || !body.password) throw Error("Fill All Input");
+  if (!email || !password) return res.status(400).send({ message: "Please Fill All Input" });
 
-  const userExist = await Users.findOne({ email: body.email });
-  if (!userExist) throw Error("Any user with this email found");
+  const userExist = await Users.findOne({email});
+  if (!userExist) return res.status(404).send({ message: "Any user with this email found" });
 
-  const rightPassword = await bcrypt.compare(body.password, userExist.password);
-  if (!rightPassword) throw Error("Wrong Password");
+  const rightPassword = await bcrypt.compare(password, userExist.password);
+  if (!rightPassword) return res.status(401).send({ message: "Wrong Password" });
 
   const role = await Roles.findOne({ _id: userExist.role_id });
 
@@ -87,9 +87,7 @@ const login = async (req, res) => {
     process.env.TOKEN_SECRET
   );
 
-  storage("token", token);
-
-  res.status(200).send({
+  res.status(200).json({
     role: role.name,
     name: userExist.first_name + " " + userExist.last_name,
     email: userExist.email,
