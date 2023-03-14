@@ -2,25 +2,43 @@ import { useState } from "react";
 import { Button } from "../../components/common/Button";
 import { Input } from "../../components/common/Input";
 import { ImageContainer } from "../../components/common/ImageContainer";
+import { useNavigate } from "react-router-dom";
 import photo from "../../assets/images/loginpic.jfif";
+import { login } from "../../services/auth-services";
 
 export const Login = () => {
+  const navigation = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
-  };
+
+
+  const handleChange = event => {
+    setUser({ ...user, [event.target.name]: event.target.value })
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(user);
+    login(user.email, user.password)
+    .then(response => {
+      const user = JSON.parse(localStorage.getItem("user"))
+
+      user.role==="writter"?navigation('/dash'):user.role==="translator"?navigation('/tdash'):navigation('/adash');
+
+      
+
+      // navigation('/dash');
+      // dispatch(loginSuccess(response.data))
+      
+    
+  })
+  .catch(error => {
+    console.log(error);
+    // dispatch(loginError(error))
+    alert(error.response.data.message);
+  });
   };
 
   return (
@@ -51,8 +69,8 @@ export const Login = () => {
                     name="email"
                     id="sign-in-email"
                     className="rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    value={user.email}
                     onChange={handleChange}
+                    value={user.email}
                     placeholder="Your email"
                   />
                 </div>
@@ -72,8 +90,9 @@ export const Login = () => {
                   </span>
                   <Input
                     type="password"
-                    name="pass"
+                    name="password"
                     id="sign-in-email"
+                    value={user.password}
                     className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     onChange={handleChange}
                     placeholder="Your password"
