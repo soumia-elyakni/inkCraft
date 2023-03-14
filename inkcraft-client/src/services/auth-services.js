@@ -14,6 +14,13 @@ const login = async(email, password) => {
       return log;
 };
 
+
+const register = async(user) =>{
+  const reg = await axios 
+  .post(API_URL + "register", user)
+
+}
+
 const logout = async () => {
    
   return localStorage.clear()
@@ -21,4 +28,5 @@ const logout = async () => {
 }
 
 export { login ,
-         logout};
+        register,
+        logout};
