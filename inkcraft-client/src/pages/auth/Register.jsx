@@ -75,7 +75,7 @@ export const Register = () => {
         <div className="picture-container flex flex-col w-1/2 h-full ">
             <ImageContainer className="h-full rounded-l-lg shadow-picture" src={photo} />
           </div>
-          <div className="flex flex-col overflow-y-auto scroll-auto form-container w-1/2 pt-20 items-center justify-center m-auto">
+          <div className="flex flex-col overflow-y-auto scroll-auto scrollbar scrollbar-thumb-green-300 scrollbar-track-green-100 scrollbar-thumb-rounded form-container w-1/2 pt-20 items-center justify-center m-auto">
             
               <div className="  flex flex-col items-center pt-20 m-6">
                 <div className="self-center mb-2 text-xl font-light text-gray-800 sm:text-2xl dark:text-white">
