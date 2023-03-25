@@ -1,11 +1,19 @@
 import React from 'react'
+import { WritterSidebar } from './WritterSidebar'
+import { WritterNavBar } from './WritterNavBar'
+import { Outlet } from 'react-router'
 
 export const WritterDashboard = () => {
-    const user = JSON.parse(localStorage.getItem("user"))
-
-    
 
   return (
-    <div>Hello {user.name} you are {user.role}</div>
+    <div>
+    <WritterNavBar/>
+    <div className='flex flex-row'>
+    <WritterSidebar/>
+    <div>
+      <Outlet/>
+    </div>
+    </div>
+    </div>
   )
 }
