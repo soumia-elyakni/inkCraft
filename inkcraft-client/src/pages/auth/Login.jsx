@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button } from "../../components/common/Button";
 import { Input } from "../../components/common/Input";
 import { ImageContainer } from "../../components/common/ImageContainer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import photo from "../../assets/images/loginpic.jfif";
+import { FaSmile } from 'react-icons/fa';
 import { login } from "../../services/auth-services";
 
 export const Login = () => {
@@ -116,9 +117,23 @@ export const Login = () => {
                     text="Login"
                     className="py-2 px-4  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                   />
+                  <div className="flex items-center mb-6 -mt-4">
+            
+            </div>
+           
                 </div>
+
               </div>
             </form>
+            <span className="flex flex-row justify-center text-sm text-center text-gray-500 flex-items-center dark:text-gray-400 mt-3 mb-8">
+                  Don't have an Account ?
+                  <Link
+                    to="/register"
+                    className="flex flex-row text-sm text-blue-500 underline hover:text-blue-700"
+                  >
+                    Sign up <FaSmile className="ml-2"  style={{ ':hover': { backgroundColor: 'yellow' } }} />
+                  </Link>
+                </span>
           </div>
 
           <div className="picture-container flex flex-col w-1/2 h-full">
