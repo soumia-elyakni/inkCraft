@@ -6,7 +6,7 @@
     /* backdrop-filter: grayscale(100%);
     backdrop-filter: blur(100px); */
     /* background-color: #E1DFD0; */
-    filter: contrast(30%);
+    filter: contrast(70%);
     width: 100%;
     height: 100vh;
     background-size: cover;
