@@ -10,7 +10,7 @@ export const WritterDashboard = () => {
     <WritterNavBar/>
     <div className='flex flex-row'>
     <WritterSidebar/>
-    <div>
+    <div className='ml-3 border max-h-full border-green-900'>
       <Outlet/>
     </div>
     </div>
