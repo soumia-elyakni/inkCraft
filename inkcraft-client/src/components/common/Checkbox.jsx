@@ -15,7 +15,7 @@ const Checkbox = ({title, type, items, onChange, name}) => {
               onChange={onChange}
               className="form-tick appearance-none bg-white bg-check h-6 w-6 border border-gray-300 rounded-md checked:bg-gray-500 checked:border-transparent focus:outline-none"
             />
-            <span className="font-normal text-gray-700 dark:text-white">{item}</span>
+            <span className="font-normal text-gray-700 dark:text-white capitalize">{item}</span>
           </label>
         ))}
       </div>
