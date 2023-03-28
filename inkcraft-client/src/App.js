@@ -5,6 +5,7 @@ import { LandingPage } from './pages/public/LandingPage';
 import {Login} from './pages/auth/Login'
 import { Register } from './pages/auth/Register';
 import { WritterDashboard } from './pages/writter/WritterDashboard';
+import { StoriesListe } from './pages/writter/outlet/StoriesListe';
 import { TranslatorDashboard } from './pages/translator/TranslatorDashboard';
 
 import './App.css';
@@ -18,7 +19,15 @@ function App() {
         <Route path="/home" element={<LandingPage />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/dash" element={<WritterDashboard/>} />
+        <Route path="/dash" element={<WritterDashboard/>} >
+          <Route path="stories" element={<StoriesListe/>}/>
+          <Route path="persons" element={<LandingPage></LandingPage>}/>
+          <Route path="places" element="{<places/>}"/>
+          <Route path="events" element="{<events/>}"/>
+          <Route path="chapters" element="{<chapters/>}"/>
+          <Route path="tools" element="{<tools/>}"/>
+          <Route path="settings" element="{<settings/>}"/>
+        </Route>
         <Route path="/tdash" element={<TranslatorDashboard/>} />
       </Routes>
     </Router>
