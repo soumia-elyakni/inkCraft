@@ -42,18 +42,7 @@ export const Register = () => {
     setNewUser({ ...newUser, role: e.target.value });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console
-  //     .log(newUser)
-  //     // await register({...newUser})
-  //     .then((response) => {
-  //       alert(response.data);
-  //     })
-  //     .catch((error) => {
-  //       alert(error.response.data.message);
-  //     });
-  // };
+ 
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -75,7 +64,7 @@ export const Register = () => {
         <div className="picture-container flex flex-col w-1/2 h-full ">
             <ImageContainer className="h-full rounded-l-lg shadow-picture" src={photo} />
           </div>
-          <div className="flex flex-col overflow-y-auto scroll-auto scrollbar scrollbar-thumb-green-300 scrollbar-track-green-100 scrollbar-thumb-rounded form-container w-1/2 pt-20 items-center justify-center m-auto">
+          <div className="flex flex-col overflow-y-auto scroll-auto scrollbar scrollbar-thumb-lime-300 scrollbar-track-lime-100 scrollbar-thumb-rounded form-container w-1/2 pt-20 items-center justify-center m-auto">
             
               <div className="  flex flex-col items-center pt-20 m-6">
                 <div className="self-center mb-2 text-xl font-light text-gray-800 sm:text-2xl dark:text-white">
@@ -155,7 +144,7 @@ export const Register = () => {
                     title="Choose your work languages"
                     type="checkbox"
                     name = "langues"
-                    items={["French", "English", "Arabic"]}
+                    items={["frensh", "english", "arabe"]}
                     onChange={handleLanguageChange}
                   />
                 </div>
@@ -164,7 +153,7 @@ export const Register = () => {
                   <Checkbox
                     title="Choose your role"
                     type="radio"
-                    items={["Writer", "Translator"]}
+                    items={["writter", "translator"]}
                     name="role"
                     onChange={handleRoleChange}
                   />
@@ -173,7 +162,7 @@ export const Register = () => {
                 <div className="flex w-full my-4">
                   <Button
                     type="submit"
-                    className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                    className="py-2 px-4  bg-lime-600 hover:bg-lime-700 focus:ring-lime-500 focus:ring-offset-lime-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                     text="Register"
                   />
                 </div>
