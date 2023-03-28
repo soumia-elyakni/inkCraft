@@ -8,26 +8,23 @@ const jwt = require("jsonwebtoken");
 const storage = require("local-storage");
 
 const addLanguesToUser = async (user, langueArray) => {
-  return new Promise(function (myResolve, myReject) {
-    try {
-      langueArray.forEach(async (langue) => {
-        let langueId = await Langues.findOne({ name: langue }, "_id");
-
-        UsersLangues.create({
-          user_id: user,
-          langue_id: langueId,
-        });
+  try {
+    for (const langue of langueArray) {
+      const langueId = await Langues.findOne({ name: langue }, "_id");
+      await UsersLangues.create({
+        user_id: user,
+        langue_id: langueId,
       });
-      myResolve();
-    } catch (e) {
-      myReject("Problem to affect language");
     }
-  });
+  } catch (error) {
+    throw new Error("Problem to affect language");
+  }
 };
+
 
 const register = async (req, res) => {
   const { body } = req;
-
+  
   if (
     !body.email ||
     !body.password ||
@@ -36,8 +33,7 @@ const register = async (req, res) => {
     !body.cin ||
     !body.role ||
     !body.langue
-  )
-  res.status(400).send({ message: "Please Fill All Input" });
+  ) return res.status(400).send({ message: "Please Fill All Input" });
    
 
   const userExist = await Users.findOne({ email: body.email });
@@ -47,14 +43,17 @@ const register = async (req, res) => {
   const role = await Roles.findOne({ name: body.role });
   body.role_id = role._id;
 
-  const langueArray = (await Array.isArray(body.langue))
-    ? body.langue
-    : [body.langue];
-
+ 
   body.password = await bcrypt.hash(body.password, 10);
 
   const newUser = await Users.create({ ...body });
-  if (!newUser) res.status(401).send({ message: "Please Fill All Input" });
+  if (!newUser) res.status(401).send({ message: "User Not Created" });
+
+  const langueArray = Array.isArray(body.langue)
+  ? body.langue
+  : [body.langue];
+
+ 
 
   const newUserId = await Users.findOne({ email: newUser.email }, "_id");
   addLanguesToUser(newUserId, langueArray)
