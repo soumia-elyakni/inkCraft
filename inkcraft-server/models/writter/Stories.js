@@ -12,19 +12,28 @@ const StoriesSchema = new mongoose.Schema({
     },
 
     resume : {
-        type : String
+        type : String,
+        default : null
     },
 
     introduction : {
-        type : String
+        type : String,
+        default : null
     },
 
     periode : {
         type: Date,
+        default : null
     },
 
     state : {
-        type : String
+        type : String,
+        enum: ["en Cours", "Terminée"]  ,
+        default : "en Cours"
+    },
+    categorie_id : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Categories"
     },
 
     user_id : {
