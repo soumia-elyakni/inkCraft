@@ -54,7 +54,6 @@ const register = async (req, res) => {
   : [body.langue];
 
  
-
   const newUserId = await Users.findOne({ email: newUser.email }, "_id");
   addLanguesToUser(newUserId, langueArray)
     .then(() => {
