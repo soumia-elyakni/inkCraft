@@ -15,6 +15,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', routes.authRoute)
+app.use('/api/writter',routes.writterRoute )
 app.use(errorHandler)
 
 
