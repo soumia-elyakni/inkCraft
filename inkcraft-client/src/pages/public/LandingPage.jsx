@@ -7,7 +7,7 @@ export const LandingPage = () => {
     <div className=''>
       <NavBar/>
       <div>
-      <img src="https://images.pexels.com/photos/1425146/pexels-photo-1425146.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" className="Background absolute object-cover w-full h-full"/>
+      <img src="https://images.pexels.com/photos/1425146/pexels-photo-1425146.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt='backgroundImg' className="Background absolute object-cover w-full h-full"/>
       <HeroSection/>
       </div>
     </div>
