@@ -17,7 +17,7 @@ export const WritterSidebar = () => {
           <nav className="mt-6">
             <div>
               <Link
-               className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname === "/dash/stories"?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
+               className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname.startsWith("/dash/stories")?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
                to="stories"
               >
                 <span className="text-left">
@@ -26,7 +26,7 @@ export const WritterSidebar = () => {
                 <span className="mx-4 text-sm font-normal">Stories</span>
              </Link>
               <Link
-               className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname === "/dash/persons"?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
+               className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname.startsWith("/dash/persons")?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
                to="persons"
               >
                 <span className="text-left">
@@ -35,7 +35,7 @@ export const WritterSidebar = () => {
                 <span className="mx-4 text-sm font-normal">Persons</span>
              </Link>
               <Link
-               className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname === "/dash/places"?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
+               className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname.startsWith("/dash/places")?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
                to="places"
               >
                 <span className="text-left">
@@ -44,7 +44,7 @@ export const WritterSidebar = () => {
                 <span className="mx-4 text-sm font-normal">Places</span>
              </Link>
               <Link
-                className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname === "/dash/events"?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
+                className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname.startsWith("/dash/events")?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
                to="events"
               >
                 <span className="text-left">
@@ -53,7 +53,7 @@ export const WritterSidebar = () => {
                 <span className="mx-4 text-sm font-normal">Events</span>
              </Link>
               <Link
-                className="flex items-center justify-start w-full p-4 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-green-500"
+                className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname.startsWith("/dash/chapters")?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
                to="chapters"
               >
                 <span className="text-left">
@@ -62,7 +62,7 @@ export const WritterSidebar = () => {
                 <span className="mx-4 text-sm font-normal">Chapters</span>
              </Link>
               <Link
-                className="flex items-center justify-start w-full p-4 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-green-500"
+                 className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname.startsWith("/dash/tools")?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
                to="tools"
               >
                 <span className="text-left">
@@ -71,7 +71,7 @@ export const WritterSidebar = () => {
                 <span className="mx-4 text-sm font-normal">Tools</span>
              </Link>
               <Link
-                className="flex items-center justify-start w-full p-4 my-2 font-thin text-gray-500 uppercase transition-colors duration-200 dark:text-gray-200 hover:text-green-500"
+                 className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname.startsWith("/dash/settings")?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
                to="settings"
               >
                 <span className="text-left">
