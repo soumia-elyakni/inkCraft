@@ -8,11 +8,11 @@ export const WritterDashboard = () => {
   return (
     <div>
     <WritterNavBar/>
-    <div className='flex flex-row'>
+    <div className='fixed flex flex-row'>
     <WritterSidebar/>
-    <div className='ml-3 border max-h-full border-green-900'>
-      <Outlet/>
-    </div>
+    <div className="inline-block ml-3 border max-h-full border-green-900">
+  <Outlet />
+</div>
     </div>
     </div>
   )
