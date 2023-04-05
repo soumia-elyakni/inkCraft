@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
 import Logo from '../../assets/images/logo.png'
 
 export const NavBar = () => {
   return (
-    <nav className="fixed top-0 left-0 w-full z-10 bg-white bg-opacity-30 py-4">
+    <nav className="fixed top-0 left-0 w-full z-20 bg-white bg-opacity-30 py-4">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between">
           <div className="flex items-center">
-            <Link to="/" className="flex">
+            <Link to="/home" className="flex">
               <img
                 src={Logo}
                 alt="Your Logo"
@@ -45,7 +44,6 @@ export const NavBar = () => {
                 Sign Up
               </button>
             </Link>
-            <FaUserCircle className="text-white text-2xl md:hidden" />
           </div>
         </div>
       </div>
