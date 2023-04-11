@@ -18,7 +18,7 @@ const StorieCard = ({ id, title, description, langue, resume, personnages }) => 
   }
 
   return (
-    <div className="" style={{ width: 300 }}>
+    <div className="" style={{ width: '275px' }}>
       <div className="relative w-full px-4 py-6 bg-white shadow-lg dark:bg-gray-700 rounded-2xl">
         <h3 className="text-2xl font-bold text-black dark:text-white">
           {title}
