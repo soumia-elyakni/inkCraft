@@ -12,9 +12,9 @@ export const WritterSidebar = () => {
 
   return (
     <div className="max-h-[90%]">
-      <div className="relative hidden h-screen my-4 ml-4 shadow-lg lg:block w-80">
-        <div className="h-full bg-white rounded-2xl dark:bg-gray-700">
-          <nav className="mt-6">
+      <div className="fixed  h-screen ml-4 shadow-lg lg:block w-80">
+        <div className="h-full bg-white bg-opacity-70 rounded-2xl dark:bg-gray-700">
+          <nav className="py-2">
             <div>
               <Link
                className={`flex items-center justify-start w-full p-4 my-2 font-thin uppercase ${location.pathname.startsWith("/dash/stories")?"border-r-4 border-green-500 bg-gradient-to-r from-white to-green-100 ":"transition-colors duration-200 hover:text-green-500"}`}
