@@ -4,7 +4,7 @@ import { Input } from "../../components/common/Input";
 import { ImageContainer } from "../../components/common/ImageContainer";
 import { useNavigate, Link } from "react-router-dom";
 import photo from "../../assets/images/loginpic.jfif";
-import { FaSmile } from 'react-icons/fa';
+import { FaSmile } from "react-icons/fa";
 import { login } from "../../services/auth-services";
 
 export const Login = () => {
@@ -14,32 +14,26 @@ export const Login = () => {
     password: "",
   });
 
-
-
-  const handleChange = event => {
-    setUser({ ...user, [event.target.name]: event.target.value })
-  }
+  const handleChange = (event) => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     login(user.email, user.password)
-    .then(response => {
-      const user = JSON.parse(localStorage.getItem("user"))
+      .then((response) => {
+        const user = JSON.parse(localStorage.getItem("user"));
 
-      user.role==="writter"?navigation('/dash'):user.role==="translator"?navigation('/tdash'):navigation('/adash');
-
-      
-
-      // navigation('/dash');
-      // dispatch(loginSuccess(response.data))
-      
-    
-  })
-  .catch(error => {
-    console.log(error);
-    // dispatch(loginError(error))
-    alert(error.response.data.message);
-  });
+        user.role === "writter"
+          ? navigation("/dash")
+          : user.role === "translator"
+          ? navigation("/tdash")
+          : navigation("/adash");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error.response.data.message);
+      });
   };
 
   return (
@@ -47,7 +41,11 @@ export const Login = () => {
       <div className="flex flex-col w-full h-full my-5 mx-5  bg-white rounded-lg shadow">
         <div className="flex flex-row justify-between h-full w-full">
           <div className="flex flex-col w-1/2 items-center justify-center m-auto">
-            <form onSubmit={handleSubmit} autoComplete="off" className="w-full px-20">
+            <form
+              onSubmit={handleSubmit}
+              autoComplete="off"
+              className="w-full px-20"
+            >
               <div className="self-center text-center mb-9 text-xl font-light text-gray-600 sm:text-2xl">
                 Login To Your Account
               </div>
@@ -100,16 +98,7 @@ export const Login = () => {
                   />
                 </div>
               </div>
-              {/* <div className="flex items-center mb-6 -mt-4">
-              <div className="flex ml-auto">
-                <Link
-                  to="#"
-                  className="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white"
-                >
-                  Forgot Your Password?
-                </Link>
-              </div>
-            </div> */}
+
               <div className="flex w-full">
                 <div className="flex w-full">
                   <Button
@@ -117,23 +106,23 @@ export const Login = () => {
                     text="Login"
                     className="py-2 px-4  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                   />
-                  <div className="flex items-center mb-6 -mt-4">
-            
-            </div>
-           
+                  <div className="flex items-center mb-6 -mt-4"></div>
                 </div>
-
               </div>
             </form>
             <span className="flex flex-row justify-center text-sm text-center text-gray-500 flex-items-center dark:text-gray-400 mt-3 mb-8">
-                  Don't have an Account ?
-                  <Link
-                    to="/register"
-                    className="flex flex-row text-sm text-blue-500 underline hover:text-blue-700"
-                  >
-                    Sign up <FaSmile className="ml-2"  style={{ ':hover': { backgroundColor: 'yellow' } }} />
-                  </Link>
-                </span>
+              Don't have an Account ?
+              <Link
+                to="/register"
+                className="flex flex-row text-sm text-blue-500 underline hover:text-blue-700"
+              >
+                Sign up{" "}
+                <FaSmile
+                  className="ml-2"
+                  style={{ ":hover": { backgroundColor: "yellow" } }}
+                />
+              </Link>
+            </span>
           </div>
 
           <div className="picture-container flex flex-col w-1/2 h-full">
