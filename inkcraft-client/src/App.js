@@ -12,6 +12,7 @@ import { TranslatorDashboard } from './pages/translator/TranslatorDashboard';
 
 import './App.css';
 import { StorieDetails } from './pages/writter/outlet/StorieDetails';
+import StorieForm from './pages/writter/outlet/StorieForm';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/dash" element={<WritterDashboard />} >
           <Route path="stories" element={<StoriesListe />} />
           <Route path="stories/:id" element={<StorieDetails />} />
+          <Route path="stories/add" element={<StorieForm/>} />
           <Route path="persons" element="{<persons/>}" />
           <Route path="places" element="{<places/>}" />
           <Route path="events" element="{<events/>}" />
