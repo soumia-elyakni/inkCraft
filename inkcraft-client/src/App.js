@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './assets/styles/styles.css'
+import { AuthenticatedRoute } from './pages/private/AuthenticatedRoute';
+import { AuthorizedRoute } from './pages/private/AuthorizedRoute';
 import { LandingPage } from './pages/public/LandingPage';
 import { Login } from './pages/auth/Login'
 import { Register } from './pages/auth/Register';
@@ -20,6 +22,10 @@ function App() {
         <Route path="/home" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+    <Route element={<AuthenticatedRoute/>}>
+
+        <Route element={<AuthorizedRoute role="writter" />}>
         <Route path="/dash" element={<WritterDashboard />} >
           <Route path="stories" element={<StoriesListe />} />
           <Route path="stories/:id" element={<StorieDetails />} />
@@ -30,7 +36,12 @@ function App() {
           <Route path="tools" element="{<tools/>}" />
           <Route path="settings" element="{<settings/>}" />
         </Route>
+        </Route>
+    
         <Route path="/tdash" element={<TranslatorDashboard />} />
+
+    </Route>
+
       </Routes>
     </Router>
   );
