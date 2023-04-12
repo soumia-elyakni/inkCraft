@@ -19,7 +19,7 @@ export const StoriesListe = () => {
   
 
 return (
-  <div className="grid grid-cols-2 gap-6 p-2">
+  <div className="grid grid-cols-2 gap-6 p-2 mt-3 py-4">
   {stories && stories.length > 0 ? (
     stories.map((storie) => (
       <StorieCard
