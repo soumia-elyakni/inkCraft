@@ -22,7 +22,7 @@ const StoriesSchema = new mongoose.Schema({
     },
 
     periode : {
-        type: Date,
+        type: String,
         default : null
     },
 
