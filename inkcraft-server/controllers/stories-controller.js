@@ -1,31 +1,44 @@
 const Stories = require("../models/writter/Stories")
 const Categories = require("../models/writter/Categories")
 const Langues = require("../models/Langues")
+const Users = require("../models/Users")
 
 const jwt = require('jsonwebtoken');
 
 
 const addStorie = async (req, res) => {
-    const { body } = req;
+  const { body } = req;
+  const id = req.user.id
+  console.log(id)
 
-    if (
-        !body.title ||
-        !body.description ||
-        
-        !body.langue
-      ) return res.status(400).send({ message: "Please Fill All Input" });
+  if (
+    !body.title ||
+    !body.description ||
+    !body.langue
+  ) {
+    return res.status(400).send({ message: "Please fill all input fields" });
+  }
 
-    
+  try {
+    const user = await Users.findById(id);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
 
-      const langue = await Langues.findOne({ name : body.langue});
-      body.langue_id = langue._id
+    const langue = await Langues.findOne({ name: body.langue });
+    if (!langue) {
+      return res.status(404).send({ message: "Language not found" });
+    }
 
-      const newStorie = await Stories.create({ ...body });
-      if (!newStorie) res.status(401).send({ message: "Storie Not Created" });
+    const newStorie = await Stories.create({ ...body, user_id: id, langue_id: langue._id });
 
-      res.status(200).send("Added to Storie with success")
+    res.status(200).send({ message: "Storie added successfully", data: newStorie });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "Server error" });
+  }
+};
 
-}
 
 
 const getStoriesByUserId = async (req, res) => {
