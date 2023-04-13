@@ -2,22 +2,39 @@ import React, { useState } from "react";
 import Checkbox from "../../../components/common/Checkbox";
 import { Input } from "../../../components/common/Input";
 import { Button } from "../../../components/common/Button";
+import { addStorie } from "../../../services/writter-services";
 
 const StorieForm = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [resume, setResume] = useState("");
-  const [introduction, setIntroduction] = useState("");
-  const [periode, setPeriode] = useState("");
-  const [langue, setLangue] = useState("");
+
+  const [storie, setStorie] = useState( {
+    title : '',
+    description : '',
+    resume : '',
+    introduction :'',
+    periode : '',
+    langue : '' ,
+  })
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // envoyer les données à l'API ou faire d'autres actions
+    console.log(storie)
+    addStorie(storie)
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setStorie(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   const handleLanguageChange = (e) => {
-    setLangue(e.target.value);
+    setStorie(prevState => ({
+      ...prevState,
+      langue: e.target.value
+    }));
   };
 
   return (
@@ -32,8 +49,8 @@ const StorieForm = () => {
         className=" rounded-lg mb-5 border-transparent appearance-none flex-1  border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
         name="title"
         placeholder="Ecrire le titre de l'histoire"
-        //   value={newUser.pass}
-        //   onChange={handleChange}
+        value={storie.title}
+        onChange={handleChange}
       />
 
       <Input
@@ -42,26 +59,30 @@ const StorieForm = () => {
         className=" rounded-lg mb-5 border-transparent appearance-none flex-1  border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
         name="description"
         placeholder="Ecrire la description de l'histoire"
-        //   value={newUser.pass}
-        //   onChange={handleChange}
+          value={storie.description}
+          onChange={handleChange}
       />
 
       <textarea
         className="flex-1 mb-5 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-        id="comment"
+        id="resume"
         placeholder="Ecrire le resumé"
-        name="comment"
+        name="resume"
         rows="5"
         cols="40"
+        value={storie.resume}
+        onChange={handleChange}
       ></textarea>
 
       <textarea
         className="flex-1 mb-5 w-full px-4 py-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-        id="comment"
+        id="introduction"
         placeholder="Ecrire l'introduction"
-        name="comment"
+        name="introduction"
         rows="5"
         cols="40"
+        value={storie.introduction}
+        onChange={handleChange}
       ></textarea>
 
       <Input
@@ -70,8 +91,8 @@ const StorieForm = () => {
         className=" rounded-lg mb-5 border-transparent appearance-none flex-1  border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
         name="periode"
         placeholder="Periode de l'histoire"
-        //   value={newUser.pass}
-        //   onChange={handleChange}
+        value={storie.periode}
+        onChange={handleChange}
       />
 
       <Checkbox
