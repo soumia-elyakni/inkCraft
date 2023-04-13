@@ -13,12 +13,7 @@ const StorieDetails = () => {
       <p>{state.description}</p>
       <p>Langue: {state.langue}</p>
       <p>Résumé: {state.resume}</p>
-      <h3>Personnages:</h3>
-      <ul>
-        {state.personnages.map((personnage, index) => (
-          <li key={index}>{personnage.name}</li>
-        ))}
-      </ul>
+   
     </div>
   );
 };
