@@ -14,7 +14,7 @@ export const HeroSection = () => {
   return (
     <div className="container relative z-10 flex items-center px-6 py-20 mx-auto md:px-12 xl:py-20">
     <div className="relative z-10 flex flex-col items-start lg:w-3/5 xl:w-2/5">
-        <span class="font-bold mt-9 text-xl text-lime-200 uppercase">
+        <span className="font-bold mt-9 text-xl text-lime-200 uppercase">
             Feather's Craft
         </span>
         <h1 className="mt-6 text-xl font-bold leading-tight text-white sm:text-5xl">
